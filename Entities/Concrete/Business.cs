@@ -39,15 +39,14 @@ namespace Entities.Concrete
         [StringLength(600)]
         public string? MapUrl { get; set; }
 
-        public float? Rating { get; set; }
+        public double? Rating { get; set; } = 0;
 
-        public int? ViewsCount { get; set; }
+        public int? ViewsCount { get; set; } = 0;
 
         [Required]
         [StringLength(50)]
         public string Slug { get; set; }
 
-        //navigation
-        public ICollection<BusinessPhoto> Photos { get; set; }
+        
     }
 }

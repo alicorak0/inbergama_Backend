@@ -9,12 +9,12 @@ using FluentValidation;
 namespace Business.ValidationRules.FluentValidation
 {
     // Prodct girilen bilghieri  doğrulayacak sınıf
-   public class ProductValidator:AbstractValidator<Product>
+   public class BusinessValidator:AbstractValidator<Entities.Concrete.Business>
     {
-        public ProductValidator() 
+        public BusinessValidator() 
         {
-            RuleFor(p => p.ProductName).MinimumLength(2).WithMessage("Ürün ismi iki karakterden uzun olmalı");
-            RuleFor(p => p.ProductName).NotEmpty().WithMessage("Ürün İsmi Boş olamaz");
+            RuleFor(b => b.BusinessName).MinimumLength(2).WithMessage("Ürün ismi iki karakterden uzun olmalı");
+            RuleFor(b => b.BusinessName).NotEmpty().WithMessage("Ürün İsmi Boş olamaz");
 
             //Koşullu Valdiate  örneğin Category'e göre Kuralar getirme
 

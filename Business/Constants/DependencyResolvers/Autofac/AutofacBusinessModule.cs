@@ -11,6 +11,9 @@ using Core.Utilities.İnterceptors;
 using Business.CCS;
 using Core.Utilities.Security.JWT;
 using Microsoft.AspNetCore.Http;
+using Business.Concrete;
+using Business.Abstract;
+using DataAccess.Abstract;
 
 
 namespace Business.Constants.DependencyResolvers.Autofac
@@ -35,7 +38,11 @@ namespace Business.Constants.DependencyResolvers.Autofac
             //   builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>().SingleInstance(); // kim isterse aynı objeyi referansı verir
 
 
+            //mekanlar için injection
+            //for categories
 
+            builder.RegisterType<BusinessManager>().As<IBusinessService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<EfBusinessDal>().As<IBusinessDal>().SingleInstance(); // kim isterse aynı objeyi referansı verir
 
 
 
