@@ -2,7 +2,6 @@
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using Microsoft.IdentityModel.Tokens;
 using System.Text.RegularExpressions;
@@ -20,7 +19,7 @@ using System.Text.RegularExpressions;
 //   }
 //}
 
-Console.WriteLine(GenerateSlug("Coffe Componny Bergama"));
+Console.WriteLine(GenerateSlug("1 Aylık ücretsiz üyelik"));
 
   string GenerateSlug(string phrase)
 {

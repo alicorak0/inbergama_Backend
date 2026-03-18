@@ -38,5 +38,9 @@ namespace Entities.Concrete
         [Required]
         [StringLength(50)]
         public string Slug { get; set; }
+
+
+        // Navigation property       Business bilgilerine erişmek için
+        public Business Business { get; set; }
     }
 }
