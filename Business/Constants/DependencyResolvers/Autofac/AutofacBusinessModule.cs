@@ -48,6 +48,9 @@ namespace Business.Constants.DependencyResolvers.Autofac
             builder.RegisterType<CampaignManager>().As<ICampaignService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
             builder.RegisterType<EfCampaignDal>().As<ICampaignDal>().SingleInstance();
 
+            builder.RegisterType<EventManager>().As<IEventService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<EfEventDal>().As<IEventDal>().SingleInstance();
+
             //validation kısmını etkinleltir startup aşamasında
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
