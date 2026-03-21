@@ -25,7 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\uploads\products\" />
+    <Folder Include="wwwroot\images\business\bergama-gym\" />
+    <Folder Include="wwwroot\images\business\quattro-cafe\cover\" />
+    <Folder Include="wwwroot\images\business\quattro-cafe\photos\" />
+    <Folder Include="wwwroot\images\vacation\" />
   </ItemGroup>
 
 </Project>
