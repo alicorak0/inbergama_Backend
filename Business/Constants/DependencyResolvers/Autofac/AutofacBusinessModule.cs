@@ -51,6 +51,12 @@ namespace Business.Constants.DependencyResolvers.Autofac
             builder.RegisterType<EventManager>().As<IEventService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
             builder.RegisterType<EfEventDal>().As<IEventDal>().SingleInstance();
 
+
+            builder.RegisterType<AdvertisingManager>().As<IAdvertisingService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<EfAdvertisingDal>().As<IAdvertisingDal>().SingleInstance();
+
+
+
             //validation kısmını etkinleltir startup aşamasında
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

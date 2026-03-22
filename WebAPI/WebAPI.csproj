@@ -25,10 +25,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\business\bergama-gym\" />
-    <Folder Include="wwwroot\images\business\quattro-cafe\cover\" />
-    <Folder Include="wwwroot\images\business\quattro-cafe\photos\" />
-    <Folder Include="wwwroot\images\vacation\" />
+    <Folder Include="wwwroot\images\advertisings\cover\" />
+    <Folder Include="wwwroot\images\businesses\bergama-gym\" />
+    <Folder Include="wwwroot\images\businesses\quattro-cafe\cover\" />
+    <Folder Include="wwwroot\images\businesses\quattro-cafe\photos\" />
+    <Folder Include="wwwroot\images\campaigns\cover\" />
+    <Folder Include="wwwroot\images\events\cover\" />
+    <Folder Include="wwwroot\images\influencers\cover\" />
+    <Folder Include="wwwroot\images\jobpostings\cover\" />
+    <Folder Include="wwwroot\images\services\cover\" />
+    <Folder Include="wwwroot\images\users\cover\" />
+    <Folder Include="wwwroot\images\vacations\kızıl-avlu\cover\" />
+    <Folder Include="wwwroot\images\vacations\kızıl-avlu\photos\" />
   </ItemGroup>
 
 </Project>
