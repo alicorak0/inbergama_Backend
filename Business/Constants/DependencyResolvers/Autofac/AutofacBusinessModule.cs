@@ -55,6 +55,11 @@ namespace Business.Constants.DependencyResolvers.Autofac
             builder.RegisterType<AdvertisingManager>().As<IAdvertisingService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
             builder.RegisterType<EfAdvertisingDal>().As<IAdvertisingDal>().SingleInstance();
 
+            builder.RegisterType<InfluencerManager>().As<IInfluencerService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<EfInfluencerDal>().As<IInfluencerDal>().SingleInstance();
+
+            builder.RegisterType<ServiceManager>().As<IServiceService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<EfServiceDal>().As<IServiceDal>().SingleInstance();
 
 
             //validation kısmını etkinleltir startup aşamasında
