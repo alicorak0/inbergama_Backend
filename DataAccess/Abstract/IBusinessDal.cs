@@ -16,5 +16,6 @@ namespace DataAccess.Abstract
 
         public BusinessDetailDto GetBusinessDetail(string businessSlug);
 
+
     }
 }

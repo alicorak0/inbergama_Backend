@@ -1,7 +1,9 @@
 ﻿using Core.Entities;
+using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +24,13 @@ namespace Entities.Concrete
         [StringLength(100)]
         public string ContentText { get; set; }
 
-        public float Rating { get; set; }
+        public double Rating { get; set; }
 
         public DateTime CreatedTime { get; set; }
+
+
+        // Navigation property
+        [ForeignKey("UserId")]
+        public User User { get; set; }
     }
 }

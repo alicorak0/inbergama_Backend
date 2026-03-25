@@ -61,6 +61,12 @@ namespace Business.Constants.DependencyResolvers.Autofac
             builder.RegisterType<ServiceManager>().As<IServiceService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
             builder.RegisterType<EfServiceDal>().As<IServiceDal>().SingleInstance();
 
+            builder.RegisterType<VacationManager>().As<IVacationService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<EfVacationDal>().As<IVacationDal>().SingleInstance();
+
+
+            builder.RegisterType<CommentManager>().As<ICommentService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<EfCommentDal>().As<ICommentDal>().SingleInstance();
 
             //validation kısmını etkinleltir startup aşamasında
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

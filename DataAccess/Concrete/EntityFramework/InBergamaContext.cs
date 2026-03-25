@@ -46,6 +46,10 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Service> Services{ get; set; }
 
 
+        public DbSet<Vacation> Vacations{ get; set; }
+
+        public DbSet<VacationPhoto> VacationPhotos{ get; set; }
+
         //yetki
         public DbSet<OperationClaim> OperationClaims { get; set; }
 
