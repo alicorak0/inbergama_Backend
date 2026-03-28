@@ -8,6 +8,8 @@ namespace Entities.DTOs
 {
    public class CampaignCardDto
     {
+        public int Id { get; set; }
+
         public string CampaignName { get; set; }   // her zaman var
         public string Slug { get; set; }           // her zaman var
         public string? Image { get; set; }         // opsiyonel

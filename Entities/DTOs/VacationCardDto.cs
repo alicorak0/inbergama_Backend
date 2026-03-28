@@ -8,6 +8,7 @@ namespace Entities.DTOs
 {
   public  class VacationCardDto
     {
+        public int Id { get; set; }
 
         public string VacationName { get; set; }
 

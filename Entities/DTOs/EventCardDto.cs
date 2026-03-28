@@ -8,6 +8,7 @@ namespace Entities.DTOs
 {
    public class EventCardDto
     {
+        public int Id { get; set; }
         public string EventName { get; set; }
 
         public DateTime Date { get; set; }

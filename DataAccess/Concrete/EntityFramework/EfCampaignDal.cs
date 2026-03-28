@@ -21,7 +21,7 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = context.Campaigns
          .Select(c => new CampaignCardDto
-         {
+         {  Id=c.CampaignId,
              CampaignName = c.CampaignName,
              Slug = c.Slug,
              Image = c.Image,

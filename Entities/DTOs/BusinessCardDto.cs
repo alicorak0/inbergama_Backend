@@ -9,6 +9,8 @@ namespace Entities.DTOs
 {
    public class BusinessCardDto:IDto
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }      // her zaman var
         public string Slug { get; set; }      // her zaman var
         public string Image { get; set; }    // opsiyonel olabilir

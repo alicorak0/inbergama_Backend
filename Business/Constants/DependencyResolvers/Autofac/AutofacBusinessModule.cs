@@ -29,13 +29,13 @@ namespace Business.Constants.DependencyResolvers.Autofac
 
 
             //authorization and login/sign in
-            //builder.RegisterType<UserManager>().As<IUserService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
-            //builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<UserManager>().As<IUserService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance(); // kim isterse aynı objeyi referansı verir
 
-            //builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
             builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance(); // kim isterse aynı objeyi referansı verir
 
-            //   builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+               builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>().SingleInstance(); // kim isterse aynı objeyi referansı verir
 
 
             //mekanlar için injection

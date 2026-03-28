@@ -20,6 +20,7 @@ namespace DataAccess.Concrete.EntityFramework
                 var item = context.Events
                 .Select(e => new EventCardDto
                 {
+                    Id=e.EventId,
                     EventName = e.EventName,
                     Date = e.Date,
                     Slug = e.Slug,

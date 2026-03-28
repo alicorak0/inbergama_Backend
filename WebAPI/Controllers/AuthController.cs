@@ -88,7 +88,7 @@ namespace WebAPI.Controllers
             {
                 FullName = user.FirstName + " " + user.LastName,
                 Email = user.Email,
-                Status = user.Status
+                Status = user.UserStatus
             });
         }
 

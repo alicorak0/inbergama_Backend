@@ -30,6 +30,7 @@ namespace DataAccess.Concrete.EntityFramework
                     .Where(b => b.CategoryId == categoryId)
                     .Select(b => new BusinessCardDto
                     {
+                        Id=b.BusinessId,
                         Name = b.BusinessName,
                         Slug = b.Slug,
                         Image = b.CoverImage,
@@ -50,6 +51,7 @@ namespace DataAccess.Concrete.EntityFramework
                     .Where(b => b.Slug == businessSlug)
                     .Select(b => new BusinessDetailDto
                     {
+                        Id=b.BusinessId,
                         Name = b.BusinessName,
                         Slug = b.Slug,
                         FullDesc = b.FullDesc,

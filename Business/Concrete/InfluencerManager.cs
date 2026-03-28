@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,11 +43,13 @@ namespace Business.Concrete
             return new SuccessResult("Influencer silindi");
         }
 
-        public IDataResult<List<Influencer>> GetAll()
+        public IDataResult<List<InfluencerCardDto>> GetAllInfluencerCard()
         {
-            var result = _influencerDal.GetAll();
-            return new SuccessDataResult<List<Influencer>>(result);
+            return new SuccessDataResult<List<InfluencerCardDto>>(_influencerDal.GetAllInfluencerCard().Data);
+
         }
+
+
 
         //public IDataResult<Influencer> GetById(int id)
         //{

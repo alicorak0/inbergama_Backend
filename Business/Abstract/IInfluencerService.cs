@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,10 @@ namespace Business.Abstract
         IResult Add(Influencer influencer);
         IResult Update(Influencer influencer);
         IResult Delete(int id);
-        IDataResult<List<Influencer>> GetAll();
-       
+
+        IDataResult<List<InfluencerCardDto>> GetAllInfluencerCard();// Tüm kampanya kartları dönmeli
+
+
+
     }
 }

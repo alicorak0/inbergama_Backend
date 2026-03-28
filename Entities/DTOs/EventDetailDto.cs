@@ -9,6 +9,8 @@ namespace Entities.DTOs
 {
    public class EventDetailDto
     {
+        public int Id { get; set; }
+
         public string EventName { get; set; }
 
         public string? LocationUrl { get; set; }

@@ -36,7 +36,10 @@ namespace Business.Concrete
                 LastName = userForRegisterDto.LastName,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
-                Status = true
+                UserStatus = true,
+                ProfilePhoto="nophoto",
+                IsEmailVerified=false,
+                
             };
             _userService.Add(user);
             

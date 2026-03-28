@@ -10,6 +10,8 @@ namespace Entities.DTOs
    public class BusinessDetailDto
     {
         // İşletme temel bilgiler
+        public int Id { get; set; }
+
         public string Name { get; set; }
         public string Slug { get; set; }
         public string? FullDesc { get; set; }

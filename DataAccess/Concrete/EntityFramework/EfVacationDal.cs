@@ -18,7 +18,7 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 return context.Vacations
                     .Select(v => new VacationCardDto
-                    {
+                    {Id=v.VacationId,
                         VacationName = v.VacationName,
                         Slug = v.Slug,
                         Image = v.Image // veya uygun property
@@ -35,6 +35,7 @@ namespace DataAccess.Concrete.EntityFramework
                     .Where(v => v.Slug == vacationSlug)
                     .Select(v => new VacationDetailDto
                     {
+                        Id = v.VacationId,
                         VacationName = v.VacationName,
                         Slug = v.Slug,
                         FullDescp = v.FullDescp,

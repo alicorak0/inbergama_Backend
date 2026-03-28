@@ -28,11 +28,11 @@ namespace Business.Concrete
                 return new ErrorResult("Mekan bulunamadı");
 
             // 🔹 Aynı kullanıcı daha önce yorum yaptı mı kontrol et
-            var existingComment = _commentDal.GetCommentsByBusinessId(business.BusinessId)
-                .FirstOrDefault(c => c.UserId == userId);
+            //var existingComment = _commentDal.GetCommentsByBusinessId(business.BusinessId)
+            //    .FirstOrDefault(c => c.UserId == userId);
 
-            if (existingComment != null)
-                return new ErrorResult("Bu mekana zaten yorum yapmışsınız");
+            //if (existingComment != null)
+            //    return new ErrorResult("Bu mekana zaten yorum yapmışsınız");
 
 
             // DTO → Entity

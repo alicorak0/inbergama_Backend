@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _influencerService.GetAll();
+            var result = _influencerService.GetAllInfluencerCard();
             if (result.Success)
             {
                 return Ok(result.Data);
