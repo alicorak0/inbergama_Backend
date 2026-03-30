@@ -1,5 +1,7 @@
 ﻿using Core.DataAccess;
+using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +12,7 @@ namespace DataAccess.Abstract
 {
    public interface IJobPostingDal : IEntityRepository<JobPosting>
     {
+        IDataResult<List<JobPostingCardDto>> GetAllJobPostingCard();// Tüm kampanya kartları dönmeli
+
     }
 }

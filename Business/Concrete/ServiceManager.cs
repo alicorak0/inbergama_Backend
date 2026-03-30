@@ -40,7 +40,7 @@ namespace Business.Concrete
         public IDataResult<List<Service>> GetAll()
         {
             var result = _serviceDal.GetAll();
-            return new SuccessDataResult<List<Service>>(result);
+            return new SuccessDataResult<List<Service>>(result,"Servisler Listelendi");
         }
 
        

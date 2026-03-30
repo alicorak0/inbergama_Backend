@@ -1,28 +1,33 @@
-using Business.Abstract;
+﻿using Business.Abstract;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServiceController : ControllerBase
+    public class JobPostingController : ControllerBase
     {
-        private readonly IServiceService _serviceService;
+        private readonly IJobPostingService _jobPostingService;
 
-        public ServiceController(IServiceService serviceService)
+        public JobPostingController(IJobPostingService jobPostingService)
         {
-            _serviceService = serviceService;
+            _jobPostingService = jobPostingService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _serviceService.GetAll();
+            var result = _jobPostingService.GetAllJobPostingCards();
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result.Message);
         }
+
+
+
+
     }
 }

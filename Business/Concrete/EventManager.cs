@@ -53,7 +53,7 @@ namespace Business.Concrete
 
         public IDataResult<List<EventCardDto>> GetAllEventCard()
         {
-            return new SuccessDataResult<List<EventCardDto>>(_eventDal.GetAllEventCard().Data);
+            return new SuccessDataResult<List<EventCardDto>>(_eventDal.GetAllEventCard().Data,"Etkinlikler Listelendi");
         }
 
         public IDataResult<EventDetailDto> GetEventDetail(string eventSlug)

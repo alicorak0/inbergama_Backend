@@ -68,6 +68,10 @@ namespace Business.Constants.DependencyResolvers.Autofac
             builder.RegisterType<CommentManager>().As<ICommentService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
             builder.RegisterType<EfCommentDal>().As<ICommentDal>().SingleInstance();
 
+
+            builder.RegisterType<JobPostingManager>().As<IJobPostingService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<EfJobPostingDal>().As<IJobPostingDal>().SingleInstance();
+
             //validation kısmını etkinleltir startup aşamasında
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

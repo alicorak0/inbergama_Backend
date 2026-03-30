@@ -45,7 +45,7 @@ namespace Business.Concrete
 
         public IDataResult<List<InfluencerCardDto>> GetAllInfluencerCard()
         {
-            return new SuccessDataResult<List<InfluencerCardDto>>(_influencerDal.GetAllInfluencerCard().Data);
+            return new SuccessDataResult<List<InfluencerCardDto>>(_influencerDal.GetAllInfluencerCard().Data,"İnfluencerler Listelendi");
 
         }
 

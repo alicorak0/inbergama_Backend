@@ -41,7 +41,7 @@ namespace Business.Concrete
         public IDataResult<List<Advertising>> GetAll()
         {
             var result = _advertisingDal.GetAll();
-            return new SuccessDataResult<List<Advertising>>(result);
+            return new SuccessDataResult<List<Advertising>>(result,"Tüm Ürünler Listelendi");
         }
 
         public IDataResult<Advertising> GetById(int id)

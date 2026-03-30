@@ -55,7 +55,7 @@ namespace Business.Concrete
 
         public IDataResult<List<CampaignCardDto>> GetAllCampaignCard()
         {
-            return new SuccessDataResult<List<CampaignCardDto>>(_campaignDal.GetAllCampaignCard().Data);
+            return new SuccessDataResult<List<CampaignCardDto>>(_campaignDal.GetAllCampaignCard().Data,"Kampanyalar Listelendi");
 
         }
 

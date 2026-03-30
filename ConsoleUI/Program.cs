@@ -19,7 +19,7 @@ using System.Text.RegularExpressions;
 //   }
 //}
 
-Console.WriteLine(GenerateSlug("1 Aylık ücretsiz üyelik"));
+Console.WriteLine(GenerateSlug("X Cafe Garson "));
 
   string GenerateSlug(string phrase)
 {
