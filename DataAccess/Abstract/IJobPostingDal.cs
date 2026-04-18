@@ -14,5 +14,7 @@ namespace DataAccess.Abstract
     {
         IDataResult<List<JobPostingCardDto>> GetAllJobPostingCard();// Tüm kampanya kartları dönmeli
 
+        IDataResult<JobPostingDetail>  GetJobPostingDetail(string jobPostingSlug);
+
     }
 }

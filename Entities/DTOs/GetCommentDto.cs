@@ -12,6 +12,8 @@ namespace Entities.DTOs
         public Double Rating { get; set; }
         public DateTime CreatedTime { get; set; }
         public string FirstName { get; set; }
+
+        public int userId { get; set; } 
         public string LastName { get; set; }
         public string ProfilePhoto { get; set; }
     }

@@ -20,7 +20,7 @@ namespace Entities.DTOs
         public string? Adress { get; set; }
         public string? MapUrl { get; set; }
 
-        public double? Rating { get; set; }
+        public decimal? Rating { get; set; }
         public int CommentCount { get; set; }
 
 

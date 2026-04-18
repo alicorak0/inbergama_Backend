@@ -26,7 +26,16 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
+        // GET api/business/category/{slug}
+        [HttpGet("jobposting/{slug}")]
+        public IActionResult GetAllJobPostingDetail(string slug)
+        {
+            var result = _jobPostingService.GetJobPostingDetail(slug);
+            if (!result.Success)
+                return BadRequest(result.Message);
 
+            return Ok(result.Data);
+        }
 
 
     }

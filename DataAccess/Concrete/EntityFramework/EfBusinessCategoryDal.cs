@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    class EfBusinessCategoryDal : EfEntityRepositoryBase<BusinessCategory, InBergamaContext>, IBusinessCategoryDal
+  public  class EfBusinessCategoryDal : EfEntityRepositoryBase<BusinessCategory, InBergamaContext>, IBusinessCategoryDal
     {
     }
 }

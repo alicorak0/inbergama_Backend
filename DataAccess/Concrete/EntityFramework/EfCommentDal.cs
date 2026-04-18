@@ -76,6 +76,7 @@ namespace DataAccess.Concrete.EntityFramework
                         CreatedTime = c.CreatedTime,
                         FirstName = c.User.FirstName,
                         LastName = c.User.LastName,
+                        userId = c.UserId,
                         ProfilePhoto = c.User.ProfilePhoto
                     })
                     .ToList();

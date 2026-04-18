@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
         [HttpGet("category/{slug}")]
         public IActionResult GetBusinessCardByCategory(string slug)
         {
-            var result = _businessService.GetBusinessCardByCategory(slug);
+            var result = _businessService.GetCategoryWithCards(slug);
             if (!result.Success)
                 return BadRequest(result.Message);
 

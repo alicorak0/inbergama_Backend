@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,8 @@ namespace Entities.DTOs
         public string ShortDesc { get; set; } // opsiyonel olabilir
         public double? Rating { get; set; }
         public int CommentCount { get; set; } // yorum sayısı
+
+
+
     }
 }

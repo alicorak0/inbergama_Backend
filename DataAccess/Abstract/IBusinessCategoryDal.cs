@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess;
+using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,6 @@ namespace DataAccess.Abstract
 {
   public  interface IBusinessCategoryDal : IEntityRepository<BusinessCategory>
     {
+      
     }
 }

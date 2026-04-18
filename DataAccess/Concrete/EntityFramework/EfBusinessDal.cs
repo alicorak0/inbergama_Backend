@@ -13,36 +13,48 @@ namespace DataAccess.Concrete.EntityFramework
     public class EfBusinessDal : EfEntityRepositoryBase<Business, InBergamaContext>, IBusinessDal
     {
         // Extra query metotları ekleyebilirsin
-        public List<BusinessCardDto> GetBusinessCardByCategory(string categorySlug)
+        public CategoryWithCardsDto GetCategoryWithCards(string categorySlug)
         {
-            using (InBergamaContext context = new InBergamaContext()) 
+            using (var context = new InBergamaContext())
             {
-                // Önce kategori id bul
-                var categoryId = context.BusinessCategories
-                                        .Where(c => c.Slug == categorySlug)
-                                        .Select(c => c.CategoryId)
-                                        .FirstOrDefault();
+                // 1️⃣ Kategoriyi çek
+                var category = context.BusinessCategories
+                                      .Where(c => c.Slug == categorySlug)
+                                      .Select(c => new BusinessCategory
+                                      {
+                                          CategoryId = c.CategoryId,
+                                          CategoryName = c.CategoryName ?? "",
+                                          Slug = c.Slug ?? "",
+                                          IconUrl = c.IconUrl ?? ""
+                                      })
+                                      .FirstOrDefault();
 
-                if (categoryId == 0) return new List<BusinessCardDto>();
+                if (category == null) return null; // kategori yoksa null dönebilir
 
-                // Card DTO listesi oluştur
-                return context.Businesses
-                    .Where(b => b.CategoryId == categoryId)
+                // 2️⃣ Kartları çek
+                var cards = context.Businesses
+                    .Where(b => b.CategoryId == category.CategoryId)
                     .Select(b => new BusinessCardDto
                     {
-                        Id=b.BusinessId,
+                        Id = b.BusinessId,
                         Name = b.BusinessName,
                         Slug = b.Slug,
                         Image = b.CoverImage,
                         ShortDesc = b.ShortDesc,
                         Rating = b.Rating,
                         CommentCount = context.Comments.Count(c => c.BusinessId == b.BusinessId)
-                    }).ToList();
+                        // ❌ Artık Category burada yok
+                    })
+                    .ToList();
 
+                // 3️⃣ DTO oluştur ve dön
+                return new CategoryWithCardsDto
+                {
+                    Category = category,
+                    Cards = cards
+                };
             }
-
         }
-
         public BusinessDetailDto GetBusinessDetail(string businessSlug)
         {
             using (InBergamaContext context = new InBergamaContext())
@@ -72,6 +84,7 @@ namespace DataAccess.Concrete.EntityFramework
                                         .Where(c => c.BusinessId == b.BusinessId)
                                         .Select(c => new CampaignCardDto
                                         {
+                                            Id=c.CampaignId,
                                             CampaignName = c.CampaignName,
                                             Slug = c.Slug,
                                             Image = c.Image,

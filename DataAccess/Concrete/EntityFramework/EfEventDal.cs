@@ -40,6 +40,7 @@ namespace DataAccess.Concrete.EntityFramework
        .Where(e => e.Slug== eventSlug )
        .Select(c => new EventDetailDto
        {
+           Id=c.EventId,
            EventName= c.EventName,
            Date = c.Date,
            ContactPhone= c.ContactPhone,

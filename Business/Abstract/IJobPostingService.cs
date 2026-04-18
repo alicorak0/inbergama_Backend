@@ -16,5 +16,8 @@ namespace Business.Abstract
         IResult Delete(int id);
 
         IDataResult<List<JobPostingCardDto>> GetAllJobPostingCards();
+
+         IDataResult<JobPostingDetail> GetJobPostingDetail(string campaignSlug);
+
     }
 }

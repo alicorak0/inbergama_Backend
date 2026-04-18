@@ -12,8 +12,7 @@ namespace DataAccess.Abstract
    public interface IBusinessDal :IEntityRepository<Business>
     {
 
-        public List<BusinessCardDto> GetBusinessCardByCategory(string categorySlug);
-
+        public CategoryWithCardsDto GetCategoryWithCards(string categorySlug);
         public BusinessDetailDto GetBusinessDetail(string businessSlug);
 
 

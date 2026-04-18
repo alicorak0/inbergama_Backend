@@ -48,6 +48,12 @@ namespace Business.Concrete
             return new SuccessDataResult<List<JobPostingCardDto>>(result.Data,"Tüm İş İlanı Kartları Listelendi");
         }
 
-
+        public IDataResult<JobPostingDetail> GetJobPostingDetail(string slug)
+        {
+            var result = _jobPostingDal.GetJobPostingDetail(slug);
+            if (result.Data == null)
+                return new ErrorDataResult<JobPostingDetail>("İş ilanı bulunamadı");
+            return new SuccessDataResult<JobPostingDetail>(result.Data, "İş ilanı detayları getirildi");
+        }
     }
 }

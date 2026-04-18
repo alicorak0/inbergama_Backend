@@ -19,9 +19,8 @@ namespace Business.Abstract
 
         public IResult Delete(int id);   //Sil
 
-        IDataResult<List<BusinessCardDto>> GetBusinessCardByCategory(string categorySlug);
-
-       public IDataResult<BusinessDetailDto> GetBusinessDetail(string businessSlug);
+        IDataResult<CategoryWithCardsDto> GetCategoryWithCards(string categorySlug);
+        public IDataResult<BusinessDetailDto> GetBusinessDetail(string businessSlug);
 
     }
 }

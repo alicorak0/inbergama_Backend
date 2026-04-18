@@ -24,7 +24,7 @@ namespace Entities.Concrete
         [StringLength(100)]
         public string ContentText { get; set; }
 
-        public double Rating { get; set; }
+        public decimal Rating { get; set; }
 
         public DateTime CreatedTime { get; set; }
 

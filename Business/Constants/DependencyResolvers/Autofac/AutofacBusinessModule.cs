@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Business.Concrete;
 using Business.Abstract;
 using DataAccess.Abstract;
+using Entities.Concrete;
 
 
 namespace Business.Constants.DependencyResolvers.Autofac
@@ -71,6 +72,13 @@ namespace Business.Constants.DependencyResolvers.Autofac
 
             builder.RegisterType<JobPostingManager>().As<IJobPostingService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
             builder.RegisterType<EfJobPostingDal>().As<IJobPostingDal>().SingleInstance();
+
+            builder.RegisterType<BusinessCategoryManager>().As<IBusinessCategoryService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<EfBusinessCategoryDal>().As<IBusinessCategoryDal>().SingleInstance();
+
+            builder.RegisterType<GeneralNotificationManager>().As<IGeneralNotificationService>().SingleInstance(); // kim isterse aynı objeyi referansı verir
+            builder.RegisterType<EfGeneralNotificationDal>().As<IGeneralNotificationDal>().SingleInstance();
+
 
             //validation kısmını etkinleltir startup aşamasında
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

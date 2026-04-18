@@ -55,7 +55,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public DbSet<UserOperationClaims> UserOperationClaims { get; set; }
 
-
+        public DbSet<GeneralNotification> GeneralNotifications { get; set; }
 
 
     }

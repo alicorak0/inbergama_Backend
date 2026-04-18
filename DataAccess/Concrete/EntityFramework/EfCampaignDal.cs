@@ -41,6 +41,7 @@ namespace DataAccess.Concrete.EntityFramework
        .Where(c => c.Slug == campaignSlug)
        .Select(c => new CampaignDetailDto
        {
+           Id=c.CampaignId,
            CampaignName = c.CampaignName,
            Slug = c.Slug,
            Image = c.Image,

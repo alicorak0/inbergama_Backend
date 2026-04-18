@@ -56,9 +56,15 @@ namespace Business.Concrete
             return new SuccessResult("İşletme silindi");
         }
 
-        public IDataResult<List<BusinessCardDto>> GetBusinessCardByCategory(string categorySlug)
+        public IDataResult<CategoryWithCardsDto> GetCategoryWithCards(string categorySlug)
         {
-            return new SuccessDataResult<List<BusinessCardDto>>(_businessDal.GetBusinessCardByCategory(categorySlug));
+            // DAL'den category + cards çekiyoruz
+            var result = _businessDal.GetCategoryWithCards(categorySlug);
+
+            if (result == null)
+                return new ErrorDataResult<CategoryWithCardsDto>("Kategori bulunamadı");
+
+            return new SuccessDataResult<CategoryWithCardsDto>(result);
         }
 
         public IDataResult<BusinessDetailDto> GetBusinessDetail(string businessSlug)

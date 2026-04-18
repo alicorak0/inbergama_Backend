@@ -16,5 +16,7 @@ namespace Entities.Concrete
         public string CategoryName { get; set; }
 
         public string Slug { get; set; }    
+
+        public string IconUrl { get; set; } 
     }
 }
