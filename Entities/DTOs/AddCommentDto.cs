@@ -11,7 +11,7 @@ namespace Entities.DTOs
 
         public string BusinessSlug { get; set; }  // Mekan slug
         public string ContentText { get; set; }   // Yorum metni
-        public double Rating { get; set; }         // Puan
+        public decimal Rating { get; set; }         // Puan
 
     }
 }

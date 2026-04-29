@@ -17,6 +17,7 @@ namespace DataAccess.Concrete.EntityFramework
         public IResult AddCommentAndUpdateRating(Comment comment)
         {
             using var context = new InBergamaContext();
+
             try
             {
                 // 1️⃣ Yorum ekle
@@ -24,25 +25,26 @@ namespace DataAccess.Concrete.EntityFramework
                 context.SaveChanges();
 
                 // 2️⃣ Business bul
-                var business = context.Businesses.FirstOrDefault(b => b.BusinessId == comment.BusinessId);
+                var business = context.Businesses
+                    .FirstOrDefault(b => b.BusinessId == comment.BusinessId);
+
                 if (business == null)
                     return new ErrorResult("Mekan bulunamadı");
 
-                // 3️⃣ Tüm yorumları çek ve ortalama rating hesapla
-                var allComments = context.Comments
+                // 3️⃣ Ortalama hesapla (decimal güvenli)
+                var avgRating = context.Comments
                     .Where(c => c.BusinessId == comment.BusinessId)
-                    .ToList();
+                    .Average(c => (decimal?)c.Rating) ?? 0;
 
-                business.Rating = allComments.Any()
-                    ? allComments.Average(c => c.Rating)
-                    : 0;
+                // 4️⃣ NORMAL ROUND (senin istediğin)
+                avgRating = Math.Round(avgRating, 1, MidpointRounding.AwayFromZero);
 
-                // 4️⃣ Business güncelle
-                context.Businesses.Attach(business);
-                context.Entry(business).Property(b => b.Rating).IsModified = true;
+                // 5️⃣ update
+                business.Rating = avgRating;
+
                 context.SaveChanges();
 
-                return new SuccessResult("Yorum eklendi ve ortalama puan güncellendi");
+                return new SuccessResult("Yorum eklendi ve ortalama güncellendi");
             }
             catch (Exception ex)
             {

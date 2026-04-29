@@ -39,7 +39,7 @@ namespace Entities.Concrete
         [StringLength(600)]
         public string? MapUrl { get; set; }
 
-        public double? Rating { get; set; } = 0;
+        public decimal? Rating { get; set; } = 0;
 
         public int? ViewsCount { get; set; } = 0;
 

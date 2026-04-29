@@ -9,7 +9,7 @@ namespace Entities.DTOs
   public  class GetCommentDto
     {
         public string ContentText { get; set; }
-        public Double Rating { get; set; }
+        public decimal Rating { get; set; }
         public DateTime CreatedTime { get; set; }
         public string FirstName { get; set; }
 

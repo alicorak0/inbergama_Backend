@@ -16,7 +16,7 @@ namespace Entities.DTOs
         public string Slug { get; set; }      // her zaman var
         public string Image { get; set; }    // opsiyonel olabilir
         public string ShortDesc { get; set; } // opsiyonel olabilir
-        public double? Rating { get; set; }
+        public decimal? Rating { get; set; }
         public int CommentCount { get; set; } // yorum sayısı
 
 
