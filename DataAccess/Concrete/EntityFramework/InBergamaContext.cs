@@ -14,12 +14,9 @@ namespace DataAccess.Concrete.EntityFramework
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseSqlServer(
-    "Server=187.77.178.44,1433;Database=inbergama;User Id=sa;Password=BiraySQL!2026#A9;Encrypt=False;TrustServerCertificate=True;Max Pool Size=100;Min Pool Size=5;",
-    opt => opt.EnableRetryOnFailure()
-);
+ 
 
-            // optionsBuilder.UseSqlServer("Data Source=PC\\ALı;Database=inbergama;Integrated Security=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+             optionsBuilder.UseSqlServer("Data Source=PC\\ALı;Database=inbergama;Integrated Security=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
             //var connectionString =
             //"server=nufusistatistikleri.online;" +
             //"database=u407062882_QrMenu;" +
