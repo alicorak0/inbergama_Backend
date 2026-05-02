@@ -15,8 +15,10 @@ namespace DataAccess.Concrete.EntityFramework
         {
 
  
-
-             optionsBuilder.UseSqlServer("Data Source=PC\\ALı;Database=inbergama;Integrated Security=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+optionsBuilder.UseSqlServer(
+    Environment.GetEnvironmentVariable("CONNECTION_STRING") 
+    ?? "Server=localhost;Database=inbergama;Trusted_Connection=True;TrustServerCertificate=True;"
+);
             //var connectionString =
             //"server=nufusistatistikleri.online;" +
             //"database=u407062882_QrMenu;" +

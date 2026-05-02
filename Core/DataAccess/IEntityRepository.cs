@@ -1,32 +1,21 @@
-﻿using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Core.Entities;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Core.Entities;
 
 namespace Core.DataAccess
-{                                                //Kısıtlama ile Ientity veya IEntity den türeyen class kabul eder
-   public interface IEntityRepository<T> where T :class,IEntity,new()  // generic yapıcaz ki Product category customer tutablisn hepsini
+{
+    // Kısıtlama: T, IEntity'den türeyen bir class olmalı.
+    public interface IEntityRepository<T> where T : class, IEntity, new()
     {
-
         void Add(T entity);
+
         void Update(T entity);
 
         void Delete(T entity);
 
-        List<T> GetAllByCategory(int categoryId); // daha bağımsız sorgu tekniği olan kod aşağıda
+        List<T> GetAllByCategory(int categoryId);
 
-        List<T> GetAll(Expression<Func<T, bool>> filter=null); // filtre de vermeyeblirsin
+        List<T> GetAll(Expression<Func<T, bool>> filter = null);
 
-        T Get(Expression<Func<T, bool>> filter); // tek bir entity detayı getirmek için
-        // buraya null gönderemezsin
-
-
-
-
-
+        T Get(Expression<Func<T, bool>> filter);
     }
 }

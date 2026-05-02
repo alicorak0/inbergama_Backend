@@ -2,7 +2,6 @@ using DataAccess.Concrete.EntityFramework;
 using Autofac.Extensions.DependencyInjection;
 using Autofac;
 using Business.Constants.DependencyResolvers.Autofac;
-using Autofac.Core;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Core.Utilities.Security.JWT;
@@ -10,11 +9,8 @@ using Core.Utilities.Security.Encryption;
 using Core.Extensions;
 using Core.Utilities.IoC;
 using Core.DependencyResolvers;
-using Core.Extensions;
-using Microsoft.Data.SqlClient;
 using System.Text.Json;
 using Business.Constants;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,9 +18,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
 
-////Singleton ekleme
-//builder.Services.AddSingleton<IProductService, ProductManager>();
-//builder.Services.AddSingleton<IProductDal, EfProductDal>();
+// Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
@@ -35,7 +31,6 @@ builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
 builder.Services.AddCors();
 
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
-
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
            .AddJwtBearer(options =>
@@ -51,8 +46,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                    IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                };
 
-
-               // BURASI EKLENDÝ
                options.Events = new JwtBearerEvents
                {
                    OnMessageReceived = context =>
@@ -61,59 +54,64 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                        {
                            context.Token = context.Request.Cookies["access_token"];
                        }
+
                        return Task.CompletedTask;
                    },
                    OnChallenge = context =>
                    {
-                       context.HandleResponse(); // default challenge iþlemini engelle
+                       context.HandleResponse();
                        context.Response.ContentType = "application/json";
                        context.Response.StatusCode = 401;
+
                        return context.Response.WriteAsync(
                            JsonSerializer.Serialize(new
                            {
-                               Message = Messages.AuthenticationError, // kendi mesajýn
+                               Message = Messages.AuthenticationError,
                                StatusCode = 401
                            })
                        );
                    }
                };
-               
-
-
-
-
            });
 
-builder.Services.AddDependencyResolvers(new ICoreModule[]{
+builder.Services.AddDependencyResolvers(new ICoreModule[]
+{
     new CoreModule()
-
-    }); //Ýçeriye eklenecek modülleri gireriz
-
-
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Swagger
+app.UseSwagger();
+app.UseSwaggerUI();
+
 if (!app.Environment.IsDevelopment())
 {
-    //app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
-
-//app.ConfigureCustomExceptionMiddleware();
+// app.ConfigureCustomExceptionMiddleware();
 
 app.UseRouting();
 
-
 app.UseCors(builder => builder
-    .WithOrigins("http://localhost:4200")  // frontend URL
+    .WithOrigins(
+        "http://localhost:4200",
+        "https://nufusistatistikleri.online",
+        "https://www.nufusistatistikleri.online",
+        "http://nufusistatistikleri.online",
+        "http://www.nufusistatistikleri.online",
+        "https://inbergama.com",
+        "https://www.inbergama.com",
+        "http://inbergama.com",
+        "http://www.nufusistatistikleri.online"
+
+
+    )
     .AllowAnyHeader()
     .AllowAnyMethod()
-    .AllowCredentials()                    // <-- cookie gönderimi için þart
+    .AllowCredentials()
 );
-
 
 app.UseMiddleware<ExceptionMiddleware>();
 
@@ -121,13 +119,9 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
+// app.UseHttpsRedirection();
 
-
-app.UseHttpsRedirection();
-
-app.UseStaticFiles();   //   for image upload
-
-
+app.UseStaticFiles(); // for image upload
 
 app.MapControllers();
 
